@@ -11,13 +11,14 @@ contract Fundraising {
 
     uint minimumGoal;
 
-    
     /// @notice Create the contract, initilize the fundraising attributes
     /// @param _deadline number of seconds the fundraising period will be active/open
     /// @param _minimumGoal the minimum amount of wei it must be collected in order to allow the owner to withdraw the funding
     constructor(uint _deadline, uint _minimumGoal) public {
         owner = msg.sender;
-        deadline = _deadline;
+        // we will use now in order to get the block timestamp, but remember that this variable can be manipulated by the miners.
+        // for our educational purpose is fine to use now
+        deadline = now + _deadline;
         minimumGoal = _minimumGoal;
     }
 
