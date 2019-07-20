@@ -1,9 +1,13 @@
 pragma solidity >=0.4.21 <0.6.0;
 
+import "./SafeMath.sol";
+
 /// @title Fundraising example contract.
 /// @author Alejandro Narancio
 /// @notice This contract will allow to make a crowd fundraising using ethers, please see the readme for the rules considered in the contract.
 contract Fundraising {
+
+    using SafeMath for uint;
 
     address owner;
 
@@ -33,7 +37,7 @@ contract Fundraising {
     function donate() public payable {
         require(now <= deadline, "The fundraising period is closed.");
         require(msg.value > 0, "Your donation can't be 0.");
-        donations[msg.sender] = donations[msg.sender] + msg.value;
+        donations[msg.sender] = donations[msg.sender].add(msg.value);
     }
 
 }
