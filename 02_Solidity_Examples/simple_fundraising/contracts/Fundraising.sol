@@ -34,6 +34,7 @@ contract Fundraising {
         return donations[_donor];
     }
 
+    /// @notice Receive a donation
     function donate() public payable {
         require(now <= deadline, "The fundraising period is closed.");
         require(msg.value > 0, "Your donation can't be 0.");
