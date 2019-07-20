@@ -26,13 +26,14 @@ contract Fundraising {
 
     /// @notice Returns the total amount of donations made by a specific address.
     /// @param _donor The address we want to get the donations.
-    function donationOf(address _donor) public view returns (uint) {
+    function donationsOf(address _donor) public view returns (uint) {
         return donations[_donor];
     }
 
     function donate() public payable {
         require(now <= deadline, "The fundraising period is closed.");
         require(msg.value > 0, "Your donation can't be 0.");
+        donations[msg.sender] = donations[msg.sender] + msg.value;
     }
 
 }
