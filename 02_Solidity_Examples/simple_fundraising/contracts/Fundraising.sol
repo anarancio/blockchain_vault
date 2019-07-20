@@ -1,5 +1,8 @@
 pragma solidity >=0.4.21 <0.6.0;
 
+/// @title Fundraising example contract. 
+/// @author Alejandro Narancio
+/// @notice This contract will allow to make a crowd fundraising using ethers, please see the readme for the rules considered in the contract.
 contract Fundraising {
 
     address owner;
