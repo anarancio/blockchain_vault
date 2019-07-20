@@ -14,7 +14,7 @@ We have 2 type of participants in our contract:
 This contract have 2 attributes:
 
 * Time: the time the collecting phase will be available
-* Goal: the minimum amount to be collected
+* Goal: the minimum amount to be collected in wei
 
 ## Rules
 
