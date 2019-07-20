@@ -24,7 +24,9 @@ contract Fundraising {
         minimumGoal = _minimumGoal;
     }
 
-    function donationsOf(address _donor) public view returns (uint) {
+    /// @notice Returns the total amount of donations made by a specific address.
+    /// @param _donor The address we want to get the donations.
+    function donationOf(address _donor) public view returns (uint) {
         return donations[_donor];
     }
 
