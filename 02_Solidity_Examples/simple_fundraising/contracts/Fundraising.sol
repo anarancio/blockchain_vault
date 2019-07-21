@@ -47,4 +47,14 @@ contract Fundraising is Ownable {
         _accumulatedDonations = _accumulatedDonations.add(msg.value);
     }
 
+    /// @notice This function will be called by the contract owner when it wants to withdraw the money collected. This only can be called after the fundraising period finished and when the minimum goal has been reached.
+    function retireDonations() public onlyOwner {
+        require(now > _deadline, "To retire the donations the fundraising period must expire");
+        require(_accumulatedDonations >= _minimumGoal, "To retire the donations, the contract should have collected at least the minimum goal");
+
+        // destruct the contract and send all the balance to the owner
+        address payable _owner = address(uint160(owner()));
+        selfdestruct(_owner);
+    }
+
 }
