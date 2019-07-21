@@ -15,6 +15,8 @@ contract Fundraising {
 
     uint minimumGoal;
 
+    uint accumulatedDonations;
+
     mapping (address => uint) donations;
 
     /// @notice Create the contract, initilize the fundraising attributes
@@ -34,11 +36,17 @@ contract Fundraising {
         return donations[_donor];
     }
 
+    /// @notice Returns the total accumulated donations.
+    function getAccumulatedDonations() public view returns (uint) {
+        return accumulatedDonations;
+    }
+
     /// @notice Receive a donation
     function donate() public payable {
         require(now <= deadline, "The fundraising period is closed.");
         require(msg.value > 0, "Your donation can't be 0.");
         donations[msg.sender] = donations[msg.sender].add(msg.value);
+        accumulatedDonations = accumulatedDonations.add(msg.value);
     }
 
 }
