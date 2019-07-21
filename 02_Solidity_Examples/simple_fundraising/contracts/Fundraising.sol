@@ -37,7 +37,7 @@ contract Fundraising {
     }
 
     /// @notice Returns the total accumulated donations. 
-    function getAccumulatedDonations() public view returns (uint) {
+    function accumulatedDonations() public view returns (uint) {
         return accumulatedDonations;
     }
 
