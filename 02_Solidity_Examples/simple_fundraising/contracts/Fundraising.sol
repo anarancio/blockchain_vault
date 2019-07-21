@@ -57,4 +57,16 @@ contract Fundraising is Ownable {
         selfdestruct(_owner);
     }
 
+    /// @notice This function will be called by the donors of the contract. If the fundraising period ended and the minimum goal is not reached, the donors can get his money back calling this function.
+    function refundDonation() public {
+        require(now > _deadline, "To get a refund the fundraising period must expire");
+        require(_accumulatedDonations < _minimumGoal, "To get a refund of your donarion, the contract should have NOT reach the minimum goal");
+        require(_donations[msg.sender] > 0, "To get a refund, you should have donated something.");
+
+        // create a payable address of the donor
+        address payable donor = address(uint160(msg.sender));
+        donor.transfer(_donations[msg.sender]);
+        _donations[msg.sender] = 0;
+    }
+
 }
