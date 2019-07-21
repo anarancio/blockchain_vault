@@ -9,13 +9,13 @@ contract Fundraising {
 
     using SafeMath for uint;
 
-    address owner;
+    address private owner;
 
-    uint deadline;
+    uint private deadline;
 
-    uint minimumGoal;
+    uint private minimumGoal;
 
-    uint accumulatedDonations;
+    uint private accumulatedDonations;
 
     mapping (address => uint) donations;
 
@@ -36,7 +36,7 @@ contract Fundraising {
         return donations[_donor];
     }
 
-    /// @notice Returns the total accumulated donations.
+    /// @notice Returns the total accumulated donations. 
     function getAccumulatedDonations() public view returns (uint) {
         return accumulatedDonations;
     }
